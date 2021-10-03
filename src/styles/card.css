@@ -1,0 +1,38 @@
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: auto;
+  width: 30vw;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 0.75rem;
+  margin: 2px 4px;
+  padding: 8px 4px;
+  color: black;
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card__image {
+  aspect-ratio: 1;
+  width: 10vw;
+}
+
+.card__body {
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 0.25rem;
+}
+
+.card__body--item {
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: 10vw 1fr;
+  justify-content: space-around;
+  padding: 0.25rem;
+}
+

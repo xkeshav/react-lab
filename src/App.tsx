@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Counter } from './Counter';
+//import { Counter } from './Counter';
+import { Pokemon } from './Pokemon';
+
 
 import { Watch } from './utils/Watch';
 
@@ -9,8 +11,8 @@ function App({ name }: { name: string }) {
     <div className="App">
       <header className="App-header">
         <Watch>{{ name }}</Watch>
-        <p> Hello {name} There </p>
-        <Counter></Counter>
+        <p> Hello {name}</p>
+        <Pokemon></Pokemon>
       </header>
     </div>
   );
