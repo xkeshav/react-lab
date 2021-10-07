@@ -40,6 +40,7 @@ export const Search = ({ data }: any) => {
         <input
           className="search"
           type="search"
+          size={40}
           placeholder="Search Pokemon by name or abilities"
           onChange={handleChange}
         />

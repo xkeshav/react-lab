@@ -43,18 +43,15 @@ export const PokemonDrawer: React.FC = () => {
 
   return (
     <>
-      <h1>Pokemon Listing</h1>
       {pokemonList.length > 0 ? (
-        <>
-          <Pagination
-            title="Pokemon Listing"
-            data={pokemonList}
-            RenderComponent={Search}
-            pageLimit={5}
-            dataLimit={dataLimit}
-            fetchDataFromServer={(off: number) => setOffset(off)}
-          />
-        </>
+        <Pagination
+          title="Pokemon Listing"
+          data={pokemonList}
+          RenderComponent={Search}
+          pageLimit={5}
+          dataLimit={dataLimit}
+          fetchDataFromServer={(off: number) => setOffset(off)}
+        />
       ) : (
         <h1>No Pokemon to display</h1>
       )}
