@@ -1,16 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Card } from './Card';
+import { Card, PokeMonItem } from './Card';
 
-export const SearchList = ({ filteredList }: any) => {
+type SearchListProps = { filteredList: PokeMonItem[] };
+
+export const SearchList = (props: SearchListProps) => {
+  console.log('searchList called', { props });
+  const { filteredList } = props;
+
   //TODO: sorting 1 cycle behind
 
   const [sortField, setSortField] = useState('name');
-  const [pokeList, setPokeList] = useState([...filteredList]);
-  console.log({ filteredList, pokeList });
+  const [pokeList, setPokeList] = useState<PokeMonItem[]>([]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const sortedPokemonList = useCallback(() => {
+  const sortPokemonList = useCallback(() => {
     console.log('sortedPokeList called');
     setPokeList(() =>
       filteredList.sort((a: any, b: any) => {
@@ -25,8 +28,8 @@ export const SearchList = ({ filteredList }: any) => {
 
   useEffect(() => {
     console.log('useEffect called');
-    sortedPokemonList();
-  }, [sortedPokemonList]);
+    sortPokemonList();
+  }, [sortPokemonList]);
 
   const sortBy = (val: string) => {
     setSortField(val);
