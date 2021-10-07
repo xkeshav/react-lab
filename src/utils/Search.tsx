@@ -1,25 +1,24 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { PokeMonItem } from './Card';
+import { PokeMon } from '../model/pokemon';
 
-import { SearchList } from './SearchList';
+import { SearchList } from '../SearchList';
 
-export const Search = ({ details }: any) => {
-  console.log('search called');
+export const Search = ({ data }: any) => {
   const [searchField, setSearchField] = useState('');
-  const [requiredList, setRequiredList] = useState<PokeMonItem[]>([]);
+  const [requiredList, setRequiredList] = useState<PokeMon[]>([]);
 
   useEffect(() => {
     // only send the required item not the complete object
     setRequiredList(
-      details.map((d: any) => {
+      data.map((d: any) => {
         const { name, weight, height, abilities } = d;
         const abilityList = abilities.map(({ ability }: any) => ability);
         return { name, weight, height, abilityList };
       })
     );
-  }, [details]);
+  }, [data]);
 
-  const filteredPokemonList = requiredList.filter((pokemon: PokeMonItem) => {
+  const filteredPokemonList = requiredList.filter((pokemon: PokeMon) => {
     const { abilityList } = pokemon;
     const abilityNameList = abilityList.map((ability: any) =>
       ability.name.toLowerCase()
@@ -41,7 +40,7 @@ export const Search = ({ details }: any) => {
         <input
           className="search"
           type="search"
-          placeholder="Search Pokemon"
+          placeholder="Search Pokemon by name or abilities"
           onChange={handleChange}
         />
       </div>

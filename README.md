@@ -1,10 +1,28 @@
-# React Lab
+#  Pokemon Picker
 
-This is a basic repo which have React with TypeScript code and my learning
+This is a repo where I am using Pokemon API to display Pokemon as per requirements
+
+## Features
+
+ - display 3 pokemon per row and each row consist it's image, name, height , weight  and abilities
+ - user can search within page
+ - user can sort by name, height and weight
+ - user can fetch next 20 pokemon list using pagination.
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory,  run:
 
-### `npm run start`
+ 1. `npm install` to install dependencies
+
+ 2. after completion of first command, run `npm run start`
+
+
+
+## TODO
+- user can set page limit and per page item but currently its 20 item per page
+- better typing
+- refactor and CSS changes
+
 

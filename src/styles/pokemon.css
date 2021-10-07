@@ -4,9 +4,11 @@
   box-sizing: content-box;
 }
 
-ul {
-  list-style-type: disc;
-  margin-inline: 1rem;
+input[type=search] {
+  height: 1.5rem;
+  padding: 0.25rem;
+  border: none;
+  border-radius: 0.25rem;
 }
 
 main {
@@ -20,14 +22,22 @@ main {
 
 .sort-block {
   text-align: left;
+  padding-inline: 1rem;
+  margin-block: 1rem;
 }
 
 
 .sort-block > span {
-  height: 40px;
-  width: 40px;
-  margin: 4px;
-  border: 1px solid red;
-  padding: 4px;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin: 0.25rem;
+  border: 1px solid #d3caca;
+  padding: 0.25rem;
   cursor: pointer;
+
+}
+
+.sort-block > span.sort--active {
+    background-color: blueviolet;
+    border: none;
 }

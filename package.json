@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "author": "Keshav Mohta<xkeshav@gmail.com>",
   "dependencies": {
     "@material/card": "^13.0.0",
     "@testing-library/jest-dom": "^5.11.4",

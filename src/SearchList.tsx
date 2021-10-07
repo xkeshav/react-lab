@@ -1,33 +1,27 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Card, PokeMonItem } from './Card';
+import { Card } from './Card';
+import { PokeMon } from './model/pokemon';
 
-type SearchListProps = { filteredList: PokeMonItem[] };
+type SearchListProps = { filteredList: PokeMon[] };
 
 export const SearchList = (props: SearchListProps) => {
-  console.log('searchList called', { props });
   const { filteredList } = props;
-
-  //TODO: sorting 1 cycle behind
-
   const [sortField, setSortField] = useState('name');
-  const [pokeList, setPokeList] = useState<PokeMonItem[]>([]);
+  const [pokeList, setPokeList] = useState<PokeMon[]>([]);
 
   const sortPokemonList = useCallback(() => {
-    console.log('sortedPokeList called');
-    setPokeList(() =>
-      filteredList.sort((a: any, b: any) => {
-        if (sortField === 'name') {
-          return a[sortField].localeCompare(b[sortField]);
-        } else {
-          return a[sortField] - b[sortField];
-        }
-      })
-    );
+    const sortedList = [...filteredList].sort((a: any, b: any) => {
+      if (sortField === 'name') {
+        return a[sortField].localeCompare(b[sortField]);
+      } else {
+        return a[sortField] - b[sortField];
+      }
+    });
+    setPokeList(sortedList);
   }, [filteredList, sortField]);
 
   useEffect(() => {
-    console.log('useEffect called');
     sortPokemonList();
   }, [sortPokemonList]);
 
@@ -35,13 +29,23 @@ export const SearchList = (props: SearchListProps) => {
     setSortField(val);
   };
 
+  const applyClass = (name: string) => {
+    return name === sortField ? 'sort--active' : undefined;
+  };
+
   return (
     <>
       <div className="sort-block">
         Sort By:
-        <span onClick={() => sortBy('name')}> Name </span>
-        <span onClick={() => sortBy('height')}> Height </span>
-        <span onClick={() => sortBy('weight')}> Weight </span>
+        <span onClick={() => sortBy('name')} className={applyClass('name')}>
+          Name
+        </span>
+        <span onClick={() => sortBy('height')} className={applyClass('height')}>
+          Height
+        </span>
+        <span onClick={() => sortBy('weight')} className={applyClass('weight')}>
+          Weight
+        </span>
       </div>
       <main>
         {pokeList.map((pokemon: any, i: number) => (
