@@ -31,7 +31,7 @@
 .card__body--item {
   background-color: aliceblue;
   display: grid;
-  grid-template-columns: 10vw 1fr;
+  grid-template-columns: minmax(2vw, 10vw) 1fr;
   justify-content: space-around;
   padding: 0.25rem;
 }
@@ -42,10 +42,10 @@ ul.card__body--list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: inline-flex
+  display: inline-flex;
 }
 
-.card__body--list > li{
+.card__body--list > li {
   padding: 2px;
   border: 1px solid grey;
   margin-inline: 4px;

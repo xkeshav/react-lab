@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { PokeMon } from '../model/pokemon';
-
 import { SearchList } from '../SearchList';
 
 export const Search = ({ data }: any) => {
@@ -36,16 +35,24 @@ export const Search = ({ data }: any) => {
 
   return (
     <section className="section">
-      <div className="search--block">
-        <input
-          className="search"
-          type="search"
-          size={40}
-          placeholder="Search Pokemon by name or abilities"
-          onChange={handleChange}
-        />
-      </div>
+      <SearchBox handleChange={handleChange} />
       <SearchList filteredList={filteredPokemonList} />
     </section>
   );
 };
+
+type SearchBoxProps = { handleChange: (e: any) => void };
+
+const SearchBox = ({ handleChange }: SearchBoxProps) => (
+  <>
+    <div className="search--block">
+      <input
+        className="search"
+        type="search"
+        size={60}
+        placeholder="Search Pokemon by name or abilities"
+        onChange={handleChange}
+      />
+    </div>
+  </>
+);

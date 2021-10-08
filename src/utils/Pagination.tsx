@@ -1,4 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { PokeMon } from '../model/pokemon';
+
+type PaginationProps = {
+  data: PokeMon[];
+  RenderComponent: React.FC<any>;
+  title: string;
+  pageLimit: number;
+  dataLimit: number;
+  fetchDataFromServer: (v: number) => void;
+};
 
 export const Pagination = ({
   data,
@@ -7,33 +17,31 @@ export const Pagination = ({
   pageLimit,
   dataLimit,
   fetchDataFromServer,
-}: any) => {
+}: PaginationProps): JSX.Element => {
   const [pages] = useState(Math.round(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
   function goToNextPage() {
     setCurrentPage((page) => page + 1);
-    const offset = currentPage * dataLimit;
-    fetchDataFromServer(offset);
   }
 
   function goToPreviousPage() {
     setCurrentPage((page) => page - 1);
-    const offset = currentPage * dataLimit;
-    fetchDataFromServer(offset);
   }
 
   function changePage(event: any) {
     const pageNumber = Number(event.target.textContent);
     setCurrentPage(pageNumber);
-    const offset = pageNumber * dataLimit;
-    fetchDataFromServer(offset);
   }
 
   const getPaginationGroup = () => {
-    let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
+    const start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
     return new Array(pageLimit).fill(0).map((_, idx) => start + idx + 1);
   };
+
+  useEffect(() => {
+    fetchDataFromServer(currentPage);
+  }, [currentPage, fetchDataFromServer]);
 
   return (
     <div>
@@ -56,7 +64,7 @@ export const Pagination = ({
             key={index}
             onClick={changePage}
             className={`pagination--item ${
-              currentPage === item ? 'active' : null
+              currentPage === item ? 'active' : ''
             }`}
           >
             <span>{item}</span>
