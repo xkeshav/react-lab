@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { PokeMon } from '../model/pokemon';
-import { SearchList } from '../SearchList';
+import { useCallback, useEffect, useState } from 'react';
+import { PokeMon } from '../model/';
+import { SearchList } from '../utils/SearchList';
 
 export const Search = ({ data }: any) => {
+  console.log({ data });
   const [searchField, setSearchField] = useState('');
   const [requiredList, setRequiredList] = useState<PokeMon[]>([]);
 
@@ -19,14 +20,9 @@ export const Search = ({ data }: any) => {
 
   const filteredPokemonList = requiredList.filter((pokemon: PokeMon) => {
     const { abilityList } = pokemon;
-    const abilityNameList = abilityList.map((ability: any) =>
-      ability.name.toLowerCase()
-    );
+    const abilityNameList = abilityList.map((ability: any) => ability.name.toLowerCase());
 
-    return (
-      pokemon.name.toLowerCase().includes(searchField) ||
-      abilityNameList.includes(searchField)
-    );
+    return pokemon.name.toLowerCase().includes(searchField) || abilityNameList.includes(searchField);
   });
 
   const handleChange = useCallback((e) => {
@@ -46,13 +42,7 @@ type SearchBoxProps = { handleChange: (e: any) => void };
 const SearchBox = ({ handleChange }: SearchBoxProps) => (
   <>
     <div className="search--block">
-      <input
-        className="search"
-        type="search"
-        size={60}
-        placeholder="Search Pokemon by name or abilities"
-        onChange={handleChange}
-      />
+      <input className="search" type="search" size={60} placeholder="Search Pokemon by name or abilities" onChange={handleChange} />
     </div>
   </>
 );

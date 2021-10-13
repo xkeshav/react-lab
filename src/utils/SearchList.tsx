@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
-import { Card } from './Card';
-import { PokeMon } from './model/pokemon';
+import { Card } from '../Card';
+import { PokeMon } from '../model';
 
 type SearchListProps = { filteredList: PokeMon[] };
 

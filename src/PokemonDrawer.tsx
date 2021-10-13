@@ -1,21 +1,20 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { SelectChangeEvent } from './model';
 import './styles/pagination.css';
 import './styles/pokemon.css';
+import { DropDown } from './utils/DropDown';
 import { Pagination } from './utils/Pagination';
 import { Search } from './utils/Search';
 
 export const PokemonDrawer: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<any>([]);
   const [error, setError] = useState<string | null>(null);
-  //const [selectedOption, setSelectedOption] = useState(20);
 
-  const [dataLimit, setDataLimit] = useState(20); // TODO: set data limit by UI
+  const [dataLimit, setDataLimit] = useState(20); 
   const [offset, setOffset] = useState(0);
 
   const fetchList = useCallback(async () => {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${dataLimit}&offset=${offset}`
-    );
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${dataLimit}&offset=${offset}`);
     if (response.ok) {
       return response.json();
     }
@@ -45,7 +44,7 @@ export const PokemonDrawer: React.FC = () => {
     setOffset(() => (pn - 1) * dataLimit);
   };
 
-  const onPageLimitChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const onPageLimitChange = (e: SelectChangeEvent) => {
     setDataLimit(+e.target.value);
   };
 
@@ -53,20 +52,8 @@ export const PokemonDrawer: React.FC = () => {
     <>
       {pokemonList.length > 0 ? (
         <>
-          <label>Per page pokemon</label>
-          <select value={dataLimit} onChange={(e) => onPageLimitChange(e)}>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select>
-          <Pagination
-            title="Pokemon Listing"
-            data={pokemonList}
-            RenderComponent={Search}
-            pageLimit={5}
-            dataLimit={dataLimit}
-            fetchDataFromServer={(pn) => fetchFromServer(pn)}
-          />
+          <DropDown handleChange={(e: SelectChangeEvent) => onPageLimitChange(e)} />
+          <Pagination title="Pokemon Listing" data={pokemonList} RenderComponent={Search} pageLimit={5} dataLimit={dataLimit} fetchDataFromServer={(pn) => fetchFromServer(pn)} />
         </>
       ) : (
         <h1>No Pokemon to display</h1>
