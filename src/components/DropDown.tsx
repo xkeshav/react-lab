@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SelectChangeEvent } from '../model';
+import { SelectChangeEvent } from '../models';
 
 export const DropDown = ({ handleChange }: { handleChange: any }) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(undefined);

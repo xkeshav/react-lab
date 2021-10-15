@@ -1,23 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Card } from '../Card';
-import { PokeMon } from '../model';
+import { PokeMon } from '../models';
+import { Card } from './Card';
 
 type SearchListProps = { filteredList: PokeMon[] };
 
-export const SearchList = (props: SearchListProps) => {
+export const SearchList = (props: SearchListProps): JSX.Element => {
   const { filteredList } = props;
   const [sortField, setSortField] = useState('name');
-  const [pokeList, setPokeList] = useState<PokeMon[]>([]);
+  const [pokeMonList, setPokeMonList] = useState<PokeMon[]>([]);
 
   const sortPokemonList = useCallback(() => {
-    const sortedList = [...filteredList].sort((a: any, b: any) => {
+    const sortedList = [...filteredList].sort((a: PokeMon, b: PokeMon) => {
       if (sortField === 'name') {
         return a[sortField].localeCompare(b[sortField]);
       } else {
         return a[sortField] - b[sortField];
       }
     });
-    setPokeList(sortedList);
+    setPokeMonList(sortedList);
   }, [filteredList, sortField]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const SearchList = (props: SearchListProps) => {
         </span>
       </div>
       <main>
-        {pokeList.map((pokemon: any, i: number) => (
+        {pokeMonList.map((pokemon: PokeMon, i: number) => (
           <Card key={i} item={pokemon} />
         ))}
       </main>

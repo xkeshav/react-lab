@@ -1,16 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+import { PokemonChaser } from './pages/PokeMonChaser';
+import './styles/index.css';
 
-import { PokemonDrawer } from './PokemonDrawer';
+type Message = {
+  sambodhan: string;
+};
 
-function App({ name }: { name: string }) {
+type OwnProps = { name: string }; // associate two types
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
+
+export type AppProps = OwnProps & DispatchProps & StateProps;
+
+const App = (props: AppProps) => {
+  //console.log({ props });
+  const { name, sambodhan } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <PokemonDrawer />
+    <div className="app container">
+      <header>
+        {sambodhan} , {name} .
       </header>
+      <main>
+        <PokemonChaser />
+      </main>
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = ({ sambodhan }: Message) => ({ sambodhan });
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

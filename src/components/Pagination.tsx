@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
-import { PokeMon } from '../model/pokemon';
+import { PokeMon } from '../models/';
 
 type PaginationProps = {
   data: PokeMon[];
@@ -63,9 +64,7 @@ export const Pagination = ({
           <button
             key={index}
             onClick={changePage}
-            className={`pagination--item ${
-              currentPage === item ? 'active' : ''
-            }`}
+            className={`pagination--item ${currentPage === item ? 'active' : ''}`}
           >
             <span>{item}</span>
           </button>

@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "cSpell.words": ["Radhe", "sambodhan", "samodhan"],
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true
+  }
+}

@@ -1,0 +1,4 @@
+export const LAUNCH_CODE = {
+	DASHBOARD: "DASHBOARD",
+	ERROR: "ERROR"
+}
