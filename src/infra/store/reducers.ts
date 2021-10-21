@@ -2,7 +2,6 @@ import { RootStateOrAny } from 'react-redux';
 import { LaunchActionType, REDUX_ACTION_LIST } from './types';
 
 
-
 const initialState = null as any;
 
 const launchReducer = (state: RootStateOrAny = initialState, action: LaunchActionType) => {

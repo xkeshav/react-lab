@@ -1,8 +1,8 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { PokemonChaser } from './pages/PokeMonChaser';
+import { PokemonChaser } from './pages/PokemonChaser';
 import './styles/index.css';
+
 
 type Message = {
   sambodhan: string;
@@ -22,9 +22,7 @@ const App = (props: AppProps) => {
       <header>
         {sambodhan} , {name} .
       </header>
-      <main>
-        <PokemonChaser />
-      </main>
+      <main><PokemonChaser /></main>
     </div>
   );
 };

@@ -6,7 +6,6 @@ type CardProps = { item: PokeMon };
 export const Card = ({ item }: CardProps) => {
   return (
     <div className="card">
-      pPagi
       <div className="card__head">
         <PokemonPicture name={item.name} />
       </div>
