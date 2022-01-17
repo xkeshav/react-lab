@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { DropDown, Pagination, Search } from '../components';
-import { SelectChangeEvent } from '../models';
+import { Item, SelectChangeEvent } from '../models';
+import { PokeMonListing } from '../models/pokemon';
 import '../styles/pagination.css';
 import '../styles/pokemon.css';
 
@@ -13,7 +14,7 @@ export const PokemonChaser: React.FC = () => {
   const [dataLimit, setDataLimit] = useState(20);
   const [offset, setOffset] = useState(0);
 
-  const fetchList = async () => {
+  const fetchList = async (): Promise<PokeMonListing> => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=${dataLimit}&offset=${offset}`
     );
@@ -28,7 +29,8 @@ export const PokemonChaser: React.FC = () => {
   const fetchDetail = useCallback(async () => {
     try {
     const {results} = await fetchList();
-    const result: Promise<any>[] = results.map(async (result: any) => {
+    console.log({results});
+    const result: Promise<Item>[] = results.map(async (result: Item) => {
       return await fetch(result.url).then((r) => r.json());
     });
     try {

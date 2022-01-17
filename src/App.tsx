@@ -18,9 +18,9 @@ const App = (props: AppProps) => {
   //console.log({ props });
   const { name, sambodhan } = props;
   return (
-    <div className="app container">
+    <div className="app">
       <header>
-        {sambodhan} , {name} .
+        {sambodhan} , {name} 
       </header>
       <main><PokemonChaser /></main>
     </div>
@@ -28,6 +28,7 @@ const App = (props: AppProps) => {
 };
 
 const mapStateToProps = ({ sambodhan }: Message) => ({ sambodhan });
+
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

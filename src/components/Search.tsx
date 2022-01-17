@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PokeMon } from '../models';
-import { SearchList } from './SearchList';
+import { Card } from './Card';
+import { SortList } from './SortList';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Search = ({ data }: any) => {
@@ -32,10 +33,29 @@ export const Search = ({ data }: any) => {
     setSearchField(e.target.value.toLowerCase());
   }, []);
 
+  const sortBy = (by: string) => {
+    const sortedList = [...requiredList].sort((a: PokeMon, b: PokeMon) => {
+      if (by === 'name') {
+        return a[by].localeCompare(b[by]);
+      } else {
+        return a[by] - b[by];
+      }
+    });
+    setRequiredList(sortedList);
+  };
+
   return (
     <section className="section">
       <SearchBox handleChange={handleChange} />
-      <SearchList filteredList={filteredPokemonList} />
+      {/*<SearchList sortList={filteredPokemonList} />*/}
+      <div className="sort-block">
+      <SortList sortBy={(by)=> sortBy(by)} />
+      </div>
+      <div className="main--block">
+        {filteredPokemonList.map((pokemon: PokeMon, i: number) => (
+          <Card key={i} item={pokemon} />
+        ))}
+      </div>
     </section>
   );
 };

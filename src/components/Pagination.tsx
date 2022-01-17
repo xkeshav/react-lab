@@ -48,7 +48,7 @@ export const Pagination = ({
     <div>
       <h1>{title}</h1>
 
-      <div className="dataContainer">
+      <div >
         <RenderComponent data={data} />
       </div>
 

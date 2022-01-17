@@ -10,3 +10,10 @@ export type PokeMon = {
 	height: number;
 	abilityList: Ability[];
 };
+
+export type PokeMonListing = {
+	count: null | number;
+	next: null | string;
+	previous: null | number;
+	results: Item[];
+} 

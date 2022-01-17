@@ -7,7 +7,7 @@ import './index.css';
 import { configureStore } from './infra/configureStore';
 import MyErrorBoundary from './pages/ErrorBoundaryPage';
 
-const initialState: any = { sambodhan: 'Ram Ram' };
+const initialState: any = { sambodhan: 'Hello' };
 
 const store = configureStore({ initialState });
 
@@ -19,9 +19,7 @@ ReactDOM.render(
         customProvider(MyErrorBoundary, {}) as any,
       ]}
     >
-      {/*<Provider store={store}>*/}
-      <App name="Keshav" />
-      {/*</Provider>*/}
+    <App name="Keshav" />
     </CombineProvider>
   </React.StrictMode>,
   document.getElementById('root')

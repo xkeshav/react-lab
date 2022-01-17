@@ -16,3 +16,9 @@
 * {
   font-size: 16px;
 }
+
+
+.option--list {
+  background-color: lavender;
+  grid-column: 2;
+}
