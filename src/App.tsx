@@ -22,7 +22,7 @@ const App = (props: AppProps) => {
       <header>
         {sambodhan} , {name} 
       </header>
-      <main><PokemonChaser /></main>
+      <main ><PokemonChaser /></main>
     </div>
   );
 };

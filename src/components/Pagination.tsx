@@ -46,7 +46,7 @@ export const Pagination = ({
 
   return (
     <div>
-      <h1>{title}</h1>
+      <div className="title"><h1>{title}</h1></div>
 
       <div >
         <RenderComponent data={data} />

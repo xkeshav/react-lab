@@ -1,47 +1,48 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
 }
 
 main {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 input[type=search] {
-  height: 1.5rem;
-  padding: 0.25rem;
-  border: none;
-  border-radius: 0.25rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    outline: none;
+    border-radius: 0.25rem;
+    border: 1px solid grey;
+    margin-left: 2rem;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: row;
-  grid-gap: 1rem;
-  justify-items: center;
-  color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+    grid-gap: 1rem;
+    justify-items: center;
+    color: black;
 }
 
-.sort-block {
-  text-align: left;
-  padding-inline: 1rem;
-  margin-block: 1rem;
+.sort--block {
+    text-align: left;
+    padding-inline: 1rem;
+    margin: 1rem;
+    justify-self: end;
 }
 
-
-.sort-block > span {
-  height: 2.5rem;
-  width: 2.5rem;
-  margin: 0.25rem;
-  border: 1px solid #d3caca;
-  padding: 0.25rem;
-  cursor: pointer;
-
+.sort--block>span {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0.25rem;
+    border: 1px solid #d3caca;
+    padding: 0.25rem;
+    cursor: pointer;
 }
 
-.sort-block > span.sort--active {
+.sort--block>span.sort--active {
     background-color: blueviolet;
     border: none;
 }

@@ -5,7 +5,6 @@ import { SortList } from './SortList';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Search = ({ data }: any) => {
-  console.log({ data });
   const [searchField, setSearchField] = useState('');
   const [requiredList, setRequiredList] = useState<PokeMon[]>([]);
 
@@ -45,13 +44,11 @@ export const Search = ({ data }: any) => {
   };
 
   return (
-    <section className="section">
+    <section className="section main--section">
       <SearchBox handleChange={handleChange} />
       {/*<SearchList sortList={filteredPokemonList} />*/}
-      <div className="sort-block">
       <SortList sortBy={(by)=> sortBy(by)} />
-      </div>
-      <div className="main--block">
+      <div className="list">
         {filteredPokemonList.map((pokemon: PokeMon, i: number) => (
           <Card key={i} item={pokemon} />
         ))}

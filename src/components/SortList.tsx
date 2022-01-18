@@ -20,7 +20,7 @@ export const SortList = (props: SortListProps): JSX.Element => {
 
   return (
     <>
-      <div className="sort-block">
+      <div className="sort--block">
         Sort By:
         <span onClick={() => sortBy('name')} className={applyClass('name')}>
           Name

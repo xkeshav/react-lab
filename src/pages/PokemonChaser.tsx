@@ -27,9 +27,9 @@ export const PokemonChaser: React.FC = () => {
   // fetch ability list of individual pokemon
 
   const fetchDetail = useCallback(async () => {
+    console.log('fetch detail called');
     try {
     const {results} = await fetchList();
-    console.log({results});
     const result: Promise<Item>[] = results.map(async (result: Item) => {
       return await fetch(result.url).then((r) => r.json());
     });
@@ -45,7 +45,7 @@ export const PokemonChaser: React.FC = () => {
     console.log({e});
     setError((e as Error).message);
   }
-  }, []);
+  }, [dataLimit, offset]);
 
   useEffect(() => {
     fetchDetail();
